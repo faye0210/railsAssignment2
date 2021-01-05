@@ -1,4 +1,4 @@
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
-<%= link_to '投稿する', new_posting_page_path %>
-<%= link_to 'プロフィールの編集', edit_user_path(current_user) %>
+<%= link_to 'Post', new_posting_page_path %>
+<%= link_to 'プロフィールの編集', edit_user_path(id: 'current_user')%>
