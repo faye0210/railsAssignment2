@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Content:</strong>
   <%= @posting_page.content %>
 </p>
-
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @posting_page.image.url %>
+</p>
 <%= link_to 'Edit', edit_posting_page_path(@posting_page) %> |
 <%= link_to 'Home', posting_pages_path %>

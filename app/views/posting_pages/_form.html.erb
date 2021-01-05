@@ -2,7 +2,6 @@
   <% if posting_page.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(posting_page.errors.count, "error") %> prohibited this posting_page from being saved:</h2>
-
       <ul>
       <% posting_page.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,12 +9,12 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= form.label :content %>
     <%= form.text_area :content %>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
   </div>
-
   <div class="actions">
     <%= form.submit 'create new post' %>
   </div>
