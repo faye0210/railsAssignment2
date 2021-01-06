@@ -1,18 +1,22 @@
 class PostingPagesController < ApplicationController
   before_action :set_posting_page, only: [:show, :edit, :update, :destroy]
+
   def index
     @posting_pages = PostingPage.all
   end
+
   def show
   end
+
   def new
     @posting_page = PostingPage.new
   end
+
   def edit
   end
-  def create
-    @posting_page = PostingPage.new(posting_page_params)
 
+  def create
+    @posting_page = current_user.posting_pages.build(posting_page_params)
     respond_to do |format|
       if @posting_page.save
         format.html { redirect_to @posting_page, notice: 'Posting page was successfully created.' }
@@ -23,6 +27,7 @@ class PostingPagesController < ApplicationController
       end
     end
   end
+
   def update
     respond_to do |format|
       if @posting_page.update(posting_page_params)
@@ -34,6 +39,7 @@ class PostingPagesController < ApplicationController
       end
     end
   end
+
   def destroy
     @posting_page.destroy
     respond_to do |format|
@@ -43,9 +49,11 @@ class PostingPagesController < ApplicationController
   end
 
   private
+
   def set_posting_page
     @posting_page = PostingPage.find(params[:id])
   end
+
   def posting_page_params
     params.require(:posting_page).permit(:content, :image, :image_cache)
   end
