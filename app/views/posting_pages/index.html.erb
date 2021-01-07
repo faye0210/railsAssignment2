@@ -4,6 +4,9 @@
   <% @posting_pages.each do |posting_page| %>
     <tbody>
       <tr>
+        <td><%= posting_page.user.name %></td>
+      </tr>
+      <tr>
         <td><%= posting_page.content %></td>
       </tr>
       <tr>
@@ -13,9 +16,11 @@
     <tfooter>
       <tr>
         <td>
-            <%= link_to 'Show', posting_page %>
+          <%= link_to 'Show', posting_page %>
+          <% if posting_page.user.id == current_user.id %>
             <%= link_to 'Edit', edit_posting_page_path(posting_page) %>
             <%= link_to 'Destroy', posting_page, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
         </td>
       </tr>
     </tfooter>

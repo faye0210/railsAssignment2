@@ -56,8 +56,8 @@ class PostingPagesController < ApplicationController
   end
 
   def ensure_correct_user
-    @posting_page = Post.find_by(params[:id])
-    if @posting_page.user_id != @current_user.id
+    @posting_page = PostingPage.find(params[:id])
+    if @posting_page.user_id != current_user.id
       flash[:notice] = "No authority"
       redirect_to posting_pages_url
     end
