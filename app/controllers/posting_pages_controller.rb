@@ -1,5 +1,6 @@
 class PostingPagesController < ApplicationController
   before_action :set_posting_page, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
     @posting_pages = PostingPage.all
@@ -52,6 +53,14 @@ class PostingPagesController < ApplicationController
 
   def set_posting_page
     @posting_page = PostingPage.find(params[:id])
+  end
+
+  def ensure_correct_user
+    @posting_page = Post.find_by(params[:id])
+    if @posting_page.user_id != @current_user.id
+      flash[:notice] = "No authority"
+      redirect_to posting_pages_url
+    end
   end
 
   def posting_page_params
