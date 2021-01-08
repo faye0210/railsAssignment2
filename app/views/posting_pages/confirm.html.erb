@@ -2,6 +2,7 @@
 <br>
 <h3 id="message">以下の内容でツイートする。</h3>
 <%= form_with(model: @posting_page, url: posting_pages_path, local: true) do |form| %>
+  <p>User: <%= @posting_page.user.name %></p>
   <%= form.hidden_field :content %>
   <p>Content: <%= @posting_page.content %></p>
   <%= form.hidden_field :image_cache %>

@@ -13,7 +13,7 @@ class PostingPagesController < ApplicationController
     if params[:back]
       @posting_page = PostingPage.new(posting_page_params)
     else
-      @posting_page = PostingPage.new
+      @posting_page = current_user.posting_pages.build
     end
   end
 
@@ -54,7 +54,7 @@ class PostingPagesController < ApplicationController
   end
 
   def confirm
-    @posting_page = PostingPage.new(posting_page_params)
+    @posting_page = current_user.posting_pages.build(posting_page_params)
     render :new if @posting_page.invalid?
   end
 
