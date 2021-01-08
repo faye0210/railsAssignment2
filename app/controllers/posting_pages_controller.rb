@@ -10,7 +10,11 @@ class PostingPagesController < ApplicationController
   end
 
   def new
-    @posting_page = PostingPage.new
+    if params[:back]
+      @posting_page = PostingPage.new(posting_page_params)
+    else
+      @posting_page = PostingPage.new
+    end
   end
 
   def edit
@@ -47,6 +51,10 @@ class PostingPagesController < ApplicationController
       format.html { redirect_to posting_pages_url, notice: 'Posting page was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def confirm
+    @posting_page = PostingPage.new(posting_page_params)
   end
 
   private

@@ -12,6 +12,7 @@
   <div class="field">
     <%= form.label :content %>
     <%= form.text_area :content %>
+    <%= image_tag(@posting_page.image.url) if @posting_page.image && @posting_page.image.url %>
     <%= form.label :image %>
     <%= form.file_field :image %>
   </div>
