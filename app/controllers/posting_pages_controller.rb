@@ -55,6 +55,7 @@ class PostingPagesController < ApplicationController
 
   def confirm
     @posting_page = PostingPage.new(posting_page_params)
+    render :new if @posting_page.invalid?
   end
 
   private
