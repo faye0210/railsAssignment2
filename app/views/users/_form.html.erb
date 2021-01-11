@@ -9,17 +9,19 @@
   </div>
 <% end %>
 <%= form_with(model: @user, local: true) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, class: 'input_area', placeholder: "your user name" %>
-  <%= f.label :profile_image %>
-  <%= f.file_field :image, id: :user_image %>
-  <%= f.hidden_field :image_cache %>
-  <%= f.label :email %>
-  <%= f.email_field :email, class: 'input_area', placeholder: "your email" %>
-  <%= f.label :password %>
-  <%= f.password_field :password, class: 'input_area', placeholder: "password" %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation, class: 'input_area', placeholder: "type same password" %>
-  <br>
-  <%= f.submit yield(:button_text), class: 'button' %>
+  <div class="input_area">
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "your user name" %>
+    <%= f.label :profile_image %>
+    <%= f.file_field :image, id: :user_image %>
+    <%= f.hidden_field :image_cache %>
+    <%= f.label :email %>
+    <%= f.email_field :email, placeholder: "your email" %>
+    <%= f.label :password %>
+    <%= f.password_field :password, placeholder: "password" %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, placeholder: "type same password" %>
+    <br>
+    <%= f.submit yield(:button_text), class: 'button' %>
+  </div>
 <% end %>

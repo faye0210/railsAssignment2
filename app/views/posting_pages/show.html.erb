@@ -6,7 +6,7 @@
   <strong>Image:</strong>
   <%= image_tag @posting_page.image.url %>
 </p>
-<br>
-<%= link_to 'Edit', edit_posting_page_path(@posting_page) %>
-<br>
-<%= link_to 'Home', posting_pages_path %>
+<div class="link_button1">
+  <%= link_to 'Edit', edit_posting_page_path(@posting_page) %>
+  <%= link_to 'Home', posting_pages_path %>
+</div>
